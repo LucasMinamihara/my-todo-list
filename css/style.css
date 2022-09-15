@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+/* Reseting all web initialization */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Putting background-color and family font */
+body {
+  font-family: "Lato", sans-serif;
+}
+.bg-color {
+  height: 100vh;
+  width: 100%;
+  background-color: #fdba74;
+  filter: blur(7px);
+}
+
+/* Styling container */
+.container {
+  width: 1200px;
+  height: 80vh;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 60px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Input tasks */
+.inputTasks {
+  width: 50%;
+  height: 10%;
+  background: #fdba74;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  box-shadow: 0px 10px 20px 7px #fb923c;
+  animation: boxShadowAnimation 10s;
+  animation-iteration-count: infinite;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border-radius: 100px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@keyframes boxShadowAnimation {
+  0% {
+    box-shadow: 0px 5px 10px 3.5px #fb923c;
+  }
+  50% {
+    box-shadow: 0px 10px 20px 7px #fb923c;
+  }
+  100% {
+    box-shadow: 0px 5px 10px 3.5px #fb923c;
+  }
+}
