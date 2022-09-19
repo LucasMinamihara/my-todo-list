@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
+/* root var css */
+:root {
+  --main-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+}
+
 /* Reseting all web initialization */
 * {
   padding: 0;
@@ -10,13 +15,23 @@
 /* Putting background-color and family font */
 body {
   font-family: "Lato", sans-serif;
-}
-.bg-color {
-  height: 100vh;
   width: 100%;
-  background: linear-gradient(#c2410c, #fed7aa);
+  background-image: linear-gradient(#22d3ee, #a5f3fc);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #ffffffff;
+  user-select: none;
 }
 
+.applicationName {
+  color: #ffffffff;
+  background-color: #0891b2;
+  margin: 50px;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 100px;
+  box-shadow: var(--main-box-shadow);
+}
 /* Styling container */
 .container {
   width: 1200px;
@@ -32,48 +47,51 @@ body {
 .inputTasks {
   width: 50%;
   height: 10%;
-  background: #fdba74;
+  background: #0891b2;
   border: none;
   outline: none;
   font-size: 1.2rem;
-  box-shadow: 5px 10px 20px 7px #fb923c;
-  animation: boxShadowAnimation 1s;
-  animation-iteration-count: infinite;
+  box-shadow: var(--main-box-shadow);
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
   border-radius: 100px;
   text-align: center;
-  color: #000000;
+  color: #ffffffff;
 }
-
-@keyframes boxShadowAnimation {
-  0% {
-    box-shadow: 5px 5px 10px 3.5px #fb923c;
-  }
-  50% {
-    box-shadow: 5px 10px 20px 7px #fb923c;
-  }
-  100% {
-    box-shadow: 5px 5px 10px 3.5px #fb923c;
-  }
+/* PlaceHolder change color */
+::placeholder {
+  color: #ffffffff;
+}
+input:focus::placeholder {
+  color: transparent;
 }
 
 /* new Task Container */
 .newTask {
-  background-color: #f97316;
+  animation: newTaskAnimation 2s forwards;
+  opacity: 0;
+  background: linear-gradient(to right, #0284c7, #7dd3fc);
   border-radius: 100px;
   text-align: center;
-  width: 300px;
+  width: 320px;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
-  box-shadow: 5px 5px 3.5px #fb923cde;
-  animation: boxShadowAnimation 1s;
-  animation-iteration-count: infinite;
+  box-shadow: var(--main-box-shadow);
   margin-right: 200px;
+}
+/* styleing hr */
+
+@keyframes newTaskAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /* testing container task style */
 .containerTasks {
@@ -82,14 +100,24 @@ body {
   margin-right: auto;
   margin-top: 50px;
 }
+.containerTasks::selection {
+  color: none;
+  background: none;
+}
 .btn {
-  background-color: #fb923cde;
+  background-color: #0891b2;
   display: inline-block;
   cursor: pointer;
   border-radius: 100px;
   padding: 10px;
   margin-left: 10px;
-  box-shadow: 5px 5px 3.5px #fb923cde;
-  animation: boxShadowAnimation 1s;
-  animation-iteration-count: infinite;
+  box-shadow: var(--main-box-shadow);
+  animation: newTaskAnimation 2s forwards;
+  opacity: 0;
+}
+.finishTask {
+  background-color: #047857;
+}
+.deleteTask {
+  background-color: #be123c;
 }
