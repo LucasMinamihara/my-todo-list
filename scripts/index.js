@@ -16,13 +16,7 @@ document.addEventListener("keydown", (e) => {
     if (inputTaskValue.length != 0) {
       let taskContent = `<div class="newTask">${inputTaskValue}</div><span class="deleteTask btn">Remove</span><span class="finishTask btn">Finished</span>`;
       containerTask.insertAdjacentHTML("beforeend", taskContent);
-      numAllTask = document.querySelectorAll(".newTask");
-      numAllDelete = document.querySelectorAll(".deleteTask");
-      numAllFinish = document.querySelectorAll(".finishTask");
-      document.querySelector(".deleteTask").addEventListener("click", remove);
-      document
-        .querySelector(".finishTask")
-        .addEventListener("click", finishTask);
+      takingQueryValues();
       inputTask.value = "";
       puttingID(numAllTask, numAllDelete, numAllFinish);
     }
@@ -36,4 +30,17 @@ function puttingID(numAllTask, numAllDelete, numAllFinish) {
     numAllDelete[c].id = c;
     numAllFinish[c].id = c;
   }
+}
+
+function takingQueryValues() {
+  numAllTask = document.querySelectorAll(".newTask");
+  numAllDelete = document.querySelectorAll(".deleteTask");
+  numAllFinish = document.querySelectorAll(".finishTask");
+  // Adding click in each QuerySekected, remove and finish
+  document.querySelectorAll(".deleteTask").forEach((eachDelete) => {
+    eachDelete.addEventListener("click", remove);
+  });
+  document.querySelectorAll(".finishTask").forEach((eachFinish) => {
+    eachFinish.addEventListener("click", finishTask);
+  });
 }

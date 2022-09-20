@@ -1,4 +1,4 @@
-let stop = false;
+let stop;
 let eachDeleteValueId;
 let eachFinishValueId;
 let taskRemove;
@@ -19,10 +19,11 @@ function remove() {
         taskRemove = arrayNumAllTask.filter(
           (eachTask) => eachTask.id == eachDeleteValueId
         );
-        removeThisTask(taskRemove);
+        // Filter same id on finish button
         finishRemove = arrayNumAllFinish.filter(
           (eachFinish) => eachFinish.id == eachDeleteValueId
         );
+        removeThisTask(taskRemove);
         removeThisRemove(eachDelete);
         removeThisFinish(finishRemove);
         stop = true;
@@ -31,15 +32,18 @@ function remove() {
     });
     // Finish each task from view
   });
+  console.log(stop);
 }
 
 function removeThisTask(taskRemove) {
   // Remove Task from DOM
+  console.log(taskRemove[0]);
   taskRemove[0].remove();
   return;
 }
 function removeThisFinish(finishRemove) {
   // Remove element finish from DOM
+  console.log(finishRemove[0]);
   finishRemove[0].remove();
   return;
 }
@@ -89,5 +93,5 @@ function finishTask() {
   });
 }
 function finishedTask(finishFinished) {
-  console.log(finishFinished);
+  finishFinished[0].classList.add("finishedTask");
 }

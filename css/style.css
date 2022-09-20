@@ -121,3 +121,9 @@ input:focus::placeholder {
 .deleteTask {
   background-color: #be123c;
 }
+.finishedTask {
+  text-decoration: line-through;
+  text-decoration-color: black;
+  text-decoration-thickness: 2px;
+  transition-duration: 5s;
+}
