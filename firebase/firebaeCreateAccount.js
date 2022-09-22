@@ -1,9 +1,10 @@
-// Importing firebase stuff
-// Import the functions you need from the SDKs you need
+// Importing stuff from firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCun1bskWeBsuN_jeHBkkILXmiwFTjpPeY",
   authDomain: "loginto-do-list.firebaseapp.com",
@@ -16,25 +17,28 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Taking values from front end when click on create an account
+const createAccount = document.querySelector(".createAccount");
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
-
-document.querySelector(".createAccount").addEventListener("click", function () {
-  const nameUserInput = document.querySelector(".nameUser").value;
-  const emailUserInput = document.querySelector(".emailUser").value;
-  const passwordUserInput = document.querySelector(".passwordUser").value;
-
-  const auth = getAuth(nameUserInput);
-  createUserWithEmailAndPassword(auth, emailUserInput, passwordUserInput)
-    .then((userCredential) => {
-      const user = userCredential.user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+// Working, creating account
+createAccount.addEventListener("click", function () {
+  let email = document.querySelector(".emailUser").value;
+  let password = document.querySelector(".passwordUser").value;
+  if (email && password) {
+    const auth = getAuth(app);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("sign-in");
+      })
+      .catch((err) => {
+        if (err.message.includes("password")) {
+          console.log("You Should put a password at least 6 characters");
+        }
+        if (err.message.includes("email")) {
+          console.log(
+            "You should use symbols @ .com .outlook and so on and so fourth"
+          );
+        }
+      });
+  }
 });
