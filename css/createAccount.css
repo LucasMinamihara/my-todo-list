@@ -48,6 +48,15 @@ input {
   padding: 10px;
   display: block;
   margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+input:focus {
+  outline: none;
+  text-align: center;
+}
+input:focus::placeholder {
+  color: transparent;
 }
 .createAccount {
   color: black;
